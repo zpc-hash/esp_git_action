@@ -18,7 +18,7 @@ jobs:
             esp_idf_version: latest
             target: esp32s3
             esp_idf_docker_image: espressif/esp-matter
-            command: cd /app/${{ github.repository }}/ && idf.py build && cd ./build/ && esptool.py merge_bin -o merged.bin --chip esp32s3 @flash_args
+            command: cd /app/${{ github.repository }}/ && idf.py build
         - name: release bins
           uses: ncipollo/release-action@v1
           with: 
