@@ -16,3 +16,4 @@ jobs:
         esp_idf_version: latest
         target: esp32s3
         esp_idf_docker_image: espressif/esp-matter
+        command: pwd && ls && idf.py build
