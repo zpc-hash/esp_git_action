@@ -1,0 +1,25 @@
+name: release esp32 bins
+on:
+    push:
+        tags: 
+            - '*'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout repo
+          uses: actions/checkout@v4
+          with:
+            submodules: 'recursive'
+        - name: esp-idf build
+          uses: espressif/esp-idf-ci-action@v1.2.0
+          with:
+            esp_idf_version: latest
+            target: esp32s3
+            esp_idf_docker_image: espressif/esp-matter
+            command: cd /app/${{ github.repository }}/ && idf.py build && cd ./build/ && esptool.py merge_bin -o merged.bin @flash_args
+        - name: release bins
+          uses: ncipollo/release-action@v1
+          with: 
+            artifacts: "/app/${{ github.repository }}/build/*.bin,/app/${{ github.repository }}/build/bootloader/bootloader.bin,/app/${{ github.repository }}/build/partition_table/partition_table.bin"
