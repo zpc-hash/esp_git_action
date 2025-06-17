@@ -25,4 +25,4 @@ jobs:
         - name: release bins
           uses: ncipollo/release-action@v1
           with: 
-            artifacts: "/app/${{ github.repository }}/build/*.bin,/app/${{ github.repository }}/build/bootloader/bootloader.bin,/app/${{ github.repository }}/build/partition_table/partition_table.bin"
+            artifacts: "${GITHUB_WORKSPACE}/build/*.bin,${GITHUB_WORKSPACE}/build/bootloader/bootloader.bin,${GITHUB_WORKSPACE}/build/partition_table/partition_table.bin"
