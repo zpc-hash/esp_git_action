@@ -25,4 +25,4 @@ jobs:
         - name: release bins
           uses: ncipollo/release-action@v1
           with: 
-            artifacts: "./build/*.bin,./build/bootloader/bootloader.bin,./build/partition_table/partition_table.bin"
+            artifacts: "./build/*.bin,./build/bootloader/bootloader.bin,./build/partition_table/partition-table.bin"
