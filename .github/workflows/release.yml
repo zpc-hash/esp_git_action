@@ -2,7 +2,7 @@ name: release esp32 bins
 on:
     push:
         tags: 
-            - '*'
+            - 'c5.*'
 
 permissions:
   contents: write
@@ -19,7 +19,7 @@ jobs:
           uses: espressif/esp-idf-ci-action@v1.2.0
           with:
             esp_idf_version: latest
-            target: esp32s3
+            target: esp32c5
             esp_idf_docker_image: espressif/esp-matter
             command: cd /app/${{ github.repository }}/ && idf.py build
         - name: release bins
