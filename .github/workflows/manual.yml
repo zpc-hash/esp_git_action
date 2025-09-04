@@ -1,0 +1,29 @@
+name: ITB Command Line Interface
+
+on:
+  workflow_dispatch:
+    inputs:
+
+      ACTION_SELECTION:
+        description: 'Select action to be performed.'
+        type: choice
+        options:
+          - Network-Info
+          - Mongoose-Update
+          - ITB-status
+        default: 'Network-Info'
+        required: true
+
+      ARTIFACTS_URL:
+        description: '(Optional) URL for artifacts.'
+        type: string
+        required: false
+  
+jobs:
+    play_with_github_action:
+        name: test message level
+        runs-on: ubuntu-latest
+        steps:
+            - name: Show Network Info
+              run: |
+                ping -c 1 192.168.0.4 && echo "::notice::online" || echo "::error::offline"
