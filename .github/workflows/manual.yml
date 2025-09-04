@@ -26,5 +26,5 @@ jobs:
         steps:
             - name: Show Network Info
               run: |
-                ping -c 1 127.0.0.1 && echo "::notice::online" || echo "::error::offline"
-                ping -c 1 127.0.0.1 && echo "\033[32monline \33[0m" || echo "\033[31moffline \033[0m"
+                ping -c 1 127.0.0.1 && echo -e "::notice::online" || echo "::error::offline"
+                ping -c 1 127.0.0.1 && echo -e "\033[32m online \033[0m" || echo -e "\033[31m offline \033[0m"
